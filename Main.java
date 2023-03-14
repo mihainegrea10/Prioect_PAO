@@ -1,67 +1,25 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 public class Main {
+    public static void main(String[] args) {
+        List<Aliment> alimente = new ArrayList<>();
+        alimente.add(new Carne(10, "2023-03-20", "pui"));
+        alimente.add(new Lapte(5, "2023-03-25", "vacă"));
+        alimente.add(new Cereale(3, "2023-04-01", "ovăz"));
+        alimente.add(new Carne(15, "2023-03-18", "vita"));
 
-
-
-
-
-    public static void main(final String[] args) {
-        System.out.println("Hello");
-        Carne carne = new Carne(10.0, "2022-01-01", "carne de vita");
-        double pret = carne.getPret();
-        System.out.println(pret);
-
-
-
-    }
-
-
-
-
-
-}
-enum Categorie {
-    LACTATE,
-    PAINE,
-    MEZELURI
-}
-
-class Aliment {
-    private double pret;
-    private String dataExpirare;
-    private String ingrediente;
-    private double calorii;
-    private String tipAliment;
-
-    public Aliment(double pret, String dataExpirare, String ingrediente, double calorii, String tipAliment) {
-        this.pret = pret;
-        this.dataExpirare = dataExpirare;
-        this.ingrediente = ingrediente;
-        this.calorii = calorii;
-        this.tipAliment = tipAliment;
-    }
-    public double getPret() {
-        return pret;
-    }
-
-
-}
-
-class Carne extends Aliment {
-    public Carne(double pret, String dataExpirare, String ingrediente) {
-        super(pret, dataExpirare, ingrediente, 1.05, "carne");
+        // sortare dupa numarul de calorii
+        alimente.stream()
+                .sorted(Comparator.comparingDouble(Aliment::getCalorii))
+                .forEach(System.out::println);
     }
 }
 
-class Lapte extends Aliment {
-    public Lapte(double pret, String dataExpirare, String ingrediente) {
-        super(pret, dataExpirare, ingrediente, 3.05, "lapte");
-    }
-}
 
-class Cereale extends Aliment {
-    public Cereale(double pret, String dataExpirare, String ingrediente) {
-        super(pret, dataExpirare, ingrediente, 2.56, "cereale");
-    }
-}
+
+
+
 
 
