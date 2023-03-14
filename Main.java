@@ -10,7 +10,7 @@ public class Main {
         alimente.add(new Cereale(3, "2023-04-01", "ovăz"));
         alimente.add(new Carne(15, "2023-03-18", "vita"));
 
-        // sortare dupa numarul de calorii
+
         alimente.stream()
                 .sorted(Comparator.comparingDouble(Aliment::getCalorii))
                 .forEach(System.out::println);
